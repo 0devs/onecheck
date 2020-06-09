@@ -1,9 +1,9 @@
 package cmd
 
 import (
-	"fmt"
 	"github.com/spf13/afero"
 	"github.com/spf13/cobra"
+	"go.uber.org/zap"
 )
 
 var fileCmd = &cobra.Command{
@@ -13,7 +13,11 @@ var fileCmd = &cobra.Command{
 		fs := afero.NewOsFs()
 		exists, err := afero.Exists(fs, "./main.go")
 
-		fmt.Println("file called", exists, err)
+		zap.L().Info("test", zap.Bool("exists", exists), zap.Error(err))
+
+		//fmt.Println("file called", exists, err)
+
+
 	},
 }
 

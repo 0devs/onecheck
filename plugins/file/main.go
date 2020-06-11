@@ -1,4 +1,4 @@
-package cmd
+package main
 
 import (
 	"github.com/spf13/afero"
@@ -6,22 +6,20 @@ import (
 	"go.uber.org/zap"
 )
 
+var Name string = "file"
+
 var fileCmd = &cobra.Command{
-	Use:   "file",
+	Use:   Name,
 	Short: "Check file exists and match conditions",
 	Run: func(cmd *cobra.Command, args []string) {
+		logger := zap.L()
 		fs := afero.NewOsFs()
 		exists, err := afero.Exists(fs, "./main.go")
 
-		zap.L().Info("test", zap.Bool("exists", exists), zap.Error(err))
-
-		//fmt.Println("file called", exists, err)
-
-
+		logger.Info("test plugin", zap.Bool("exists", exists), zap.Error(err))
 	},
 }
 
-func init()  {
-	//fileCmd.Flags().
+func Init(rootCmd *cobra.Command) {
 	rootCmd.AddCommand(fileCmd)
 }

@@ -1,18 +1,18 @@
 package main
 
 import (
-	"github.com/0devs/onecheck/cmd"
-	"github.com/0devs/onecheck/logger"
+	_logger "github.com/0devs/onecheck/logger"
 	"github.com/spf13/cobra"
 	"go.uber.org/zap"
-	"plugin"
+	_plugin "plugin"
 )
 
 func main() {
-	logger.InitLogger()
+	_logger.InitLogger()
+
 	logger := zap.L()
 
-	plugin, err := plugin.Open("file.so")
+	plugin, err := _plugin.Open("file.so")
 
 	if err != nil {
 		logger.Error("error", zap.Error(err))
@@ -32,7 +32,7 @@ func main() {
 		logger.Error("error", zap.Error(err))
 	}
 
-	initPlugin.(func(rootCmd *cobra.Command))(cmd.RootCmd)
+	initPlugin.(func(rootCmd *cobra.Command))(RootCmd)
 
-	cmd.Execute()
+	Execute()
 }

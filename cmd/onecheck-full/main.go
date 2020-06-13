@@ -2,7 +2,7 @@ package main
 
 import (
 	_logger "github.com/0devs/onecheck/logger"
-	filePlugin "github.com/0devs/onecheck/plugin/file"
+	filePlugin "github.com/0devs/onecheck/plugin/file/command"
 	"go.uber.org/zap"
 )
 

@@ -7,7 +7,7 @@ import (
 
 func InitLogger() *zap.Logger {
 	rawJSON := []byte(`{
-	  "level": "debug",
+	  "level": "info",
 	  "encoding": "console",
 	  "outputPaths": ["stdout"],
 	  "errorOutputPaths": ["stderr"],

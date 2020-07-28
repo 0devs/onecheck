@@ -51,9 +51,10 @@ func (p *FilePlugin) ValidateConfigFromMap(configMap interface{}) error {
 	return nil
 }
 
-//func (p *FilePlugin) RunFromMap(configMap interface{}) {
-//
-//}
+func (p *FilePlugin) RunFromMap(configMap interface{}) (error, plugin.Result) {
+	result := plugin.Result{}
+	return nil, result
+}
 
 var Plugin = FilePlugin{
 	Name:    "file",
